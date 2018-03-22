@@ -1,0 +1,22 @@
+<h1 id="Contributing-to-Lazy-Load"><a href="#Contributing-to-Lazy-Load" class="headerlink" title="Contributing to Lazy Load"></a>Contributing to Lazy Load</h1><h2 id="Only-one-feature-or-change-per-pull-request"><a href="#Only-one-feature-or-change-per-pull-request" class="headerlink" title="Only one feature or change per pull request"></a>Only one feature or change per pull request</h2><p>Make pull requests only one feature or change at the time. For example you have fixed a bug. You also have optimized some code. Optimization is not related to a bug. These should be submitted as separate pull requests. This way I can easily choose what to include. It is also easier to understand the code changes. Commit messages should be descriptive and full sentences.</p>
+<p>Do not commit minified versions. Do not touch the version number. Make the pull requests against <a href="https://github.com/tuupola/jquery_lazyload/commits/1.9.x">1.9.x branch</a>.</p>
+<h2 id="Write-meaningful-commit-messages"><a href="#Write-meaningful-commit-messages" class="headerlink" title="Write meaningful commit messages"></a>Write meaningful commit messages</h2><p>Proper commit message is full sentence. It starts with capital letter but does not end with period. Headlines do not end with period. The GitHub default <code>Update filename.js</code> is not enough. When needed include also longer explanation what the commit does.</p>
+<pre><code>Capitalized, short (50 chars or less) summary
+
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
+</code></pre><p>When in doubt see Tim Pope’s blogpost <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">A Note About Git Commit Messages</a></p>
+<h2 id="Follow-the-existing-coding-standards"><a href="#Follow-the-existing-coding-standards" class="headerlink" title="Follow the existing coding standards"></a>Follow the existing coding standards</h2><p>When contributing to open source project it is polite to follow the original authors coding standars. They might be different than yours. It is not a holy war. Just follow then original.</p>
+<pre><code class="javascript"><span class="keyword">var</span> snake_case = <span class="string">"something"</span>;
+
+<span class="function"><span class="keyword">function</span> <span class="title">camelCase</span>(<span class="params">options</span>) </span>{
+}
+
+<span class="keyword">if</span> (<span class="literal">true</span> !== <span class="literal">false</span>) {
+    <span class="built_in">console</span>.log(<span class="string">"here be dragons"</span>);
+}
+</code></pre>
