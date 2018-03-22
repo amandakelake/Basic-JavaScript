@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="react 状态管理+异步 思考对使用Redux和Redux-saga管理状态的思考 - 莫凡的前端专栏 - SegmentFault 思否值得一看，深度剖析聊聊redux-saga - 贰年人折木 - SegmentFault 思否有一个登录登出的例子Redux异步方案选型 - kpaxqin - SegmentFault 思否作者的视野比较高，从模板代码、乐观更新、错误处理、竞态等多方面进行选">
+<meta property="og:type" content="article">
+<meta property="og:title" content="test">
+<meta property="og:url" content="http://github.com/amandakelake/blog/2018/03/22/tttt/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="react 状态管理+异步 思考对使用Redux和Redux-saga管理状态的思考 - 莫凡的前端专栏 - SegmentFault 思否值得一看，深度剖析聊聊redux-saga - 贰年人折木 - SegmentFault 思否有一个登录登出的例子Redux异步方案选型 - kpaxqin - SegmentFault 思否作者的视野比较高，从模板代码、乐观更新、错误处理、竞态等多方面进行选">
+<meta property="og:updated_time" content="2018-03-22T02:26:41.942Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="test">
+<meta name="twitter:description" content="react 状态管理+异步 思考对使用Redux和Redux-saga管理状态的思考 - 莫凡的前端专栏 - SegmentFault 思否值得一看，深度剖析聊聊redux-saga - 贰年人折木 - SegmentFault 思否有一个登录登出的例子Redux异步方案选型 - kpaxqin - SegmentFault 思否作者的视野比较高，从模板代码、乐观更新、错误处理、竞态等多方面进行选">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://github.com/amandakelake/blog/2018/03/22/tttt/"/>
+
+
+
+
+
+  <title>test | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://github.com/amandakelake/blog/blog/2018/03/22/tttt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="amandakelake">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">test</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T10:25:22+08:00">
+                2018-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="react-状态管理-异步-思考"><a href="#react-状态管理-异步-思考" class="headerlink" title="react 状态管理+异步 思考"></a>react 状态管理+异步 思考</h1><p><a href="https://segmentfault.com/a/1190000011523186" target="_blank" rel="noopener">对使用Redux和Redux-saga管理状态的思考 - 莫凡的前端专栏 - SegmentFault 思否</a>值得一看，深度剖析<br><a href="https://segmentfault.com/a/1190000011104199" target="_blank" rel="noopener">聊聊redux-saga - 贰年人折木 - SegmentFault 思否</a>有一个登录登出的例子<br><a href="https://segmentfault.com/a/1190000007248878" target="_blank" rel="noopener">Redux异步方案选型 - kpaxqin - SegmentFault 思否</a>作者的视野比较高，从模板代码、乐观更新、错误处理、竞态等多方面进行选型分析</p>
+<h2 id="渐进式地选择数据流工具"><a href="#渐进式地选择数据流工具" class="headerlink" title="渐进式地选择数据流工具"></a>渐进式地选择数据流工具</h2><h6 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h6><p>我需要一个全局数据源且其他组件可以直接获取/改变全局数据源中的数据</p>
+<h6 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h6><ol>
+<li>我需要一个全局数据源且其他组件可以直接获取/改变全局数据源中的数据</li>
+<li>我需要全程跟踪/管理 action 的分发过程/顺序</li>
+</ol>
+<h6 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a>redux-thunk</h6><p><a href="bear://x-callback-url/open-note?id=19F38F31-215E-4803-8471-5AD3ABD7D0A2-321-0000635354743DFF" target="_blank" rel="noopener">Redux异步控制</a></p>
+<ol>
+<li>我需要一个全局数据源且其他组件可以直接获取/改变全局数据源中的数据</li>
+<li>我需要全程跟踪/管理 action 的分发过程/顺序</li>
+<li>我需要组件对同步或异步的 action 无感，调用异步 action 时不需要显式地传入 dispatch</li>
+</ol>
+<p>redux-thunk 的主要思想是扩展 action，使得 action 从一个对象变成一个函数。</p>
+<h6 id="redux-saga"><a href="#redux-saga" class="headerlink" title="redux-saga"></a>redux-saga</h6><ol>
+<li>我需要一个全局数据源且其他组件可以直接获取/改变全局数据源中的数据</li>
+<li>我需要全程跟踪/管理 action 的分发过程/顺序</li>
+<li>我需要组件对同步或异步的 action 无感，调用异步 action 时不需要显式地传入 dispatch</li>
+<li>我需要声明式地来表述复杂异步数据流（如长流程表单，请求失败后重试等），命令式的 thunk 对于复杂异步数据流的表现力有限</li>
+</ol>
+<p>先看名字来理解：saga，这个术语常用于CQRS架构，代表查询与责任分离。</p>
+<p>没错，就是查询（dispatch）与责任（sagas）分离。saga提供了action监听函数，只需在组件里dispatch 相应type的action，就可以自动调用你定义好的对应这个action的异步处理函数（sagas）来完成任务，保证了只在组件里dispatch action来发起异步操作而不是redux-thunk、redux-promise的调用action creators。</p>
+<p>另外一大特色就是redux-saga做到了异步代码以同步方式写，非常直观方便，怎么做到的呢？它是利用了ES6新魔法Generator迭代器，可以完美解决异步回调地狱，让你以同步方式写异步。saga正是利用Generator特性让其处理异步变得非常方便又容易理解。这是一个常见的请求后台数据的异步操作，感受一下：</p>
+<h2 id="redux-thunk-1"><a href="#redux-thunk-1" class="headerlink" title="redux-thunk"></a>redux-thunk</h2><p><a href="http://cn.redux.js.org/docs/advanced/AsyncActions.html" target="_blank" rel="noopener">Redux官方文档-thunk</a></p>
+<blockquote>
+<p>通过使用指定的 middleware，action 创建函数除了返回 action 对象外还可以返回函数。这时，这个 action 创建函数就成为了 thunk</p>
+</blockquote>
+<blockquote>
+<p>当 action 创建函数返回函数时，这个函数会被 Redux Thunk middleware 执行。这个函数并不需要保持纯净；它还可以带有副作用，包括执行异步 API 请求。这个函数还可以 dispatch action，就像 dispatch 前面定义的同步 action 一样<br>thunk 的一个优点是它的结果可以再次被 dispatch</p>
+</blockquote>
+<p>判断 actionCreator 返回的是不是一个函数，如果不是的话，就很普通地传给下一个中间件（或者 reducer）；如果是的话，那么把 dispatch、getState、extraArgument 作为参数传入这个函数里，实现异步控制<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleware</span>(<span class="params">extraArgument</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">&#123; dispatch, getState &#125;</span>) =&gt;</span> next =&gt; <span class="function"><span class="params">action</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> next(action);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>getState可以在reducer里面获取store里面的数据<br><code>const method = getState().cashier.method;</code></p>
+<p>举个比较简单的例子，我们现在要实现『图片上传』功能，用户点击开始上传之后，显示出加载效果，上传完毕之后，隐藏加载效果，并显示出预览图；如果发生错误，那么显示出错误信息，并且在2秒后消失。</p>
+<h6 id="redux-thunk-2"><a href="#redux-thunk-2" class="headerlink" title="redux-thunk"></a>redux-thunk</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">dispatch</span> =&gt;</span> &#123;</span><br><span class="line">    	<span class="comment">// 显示出加载效果</span></span><br><span class="line">    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'SHOW_WAITING_MODAL'</span> &#125;);</span><br><span class="line">    	<span class="comment">// 开始上传</span></span><br><span class="line">    	api.upload(data)</span><br><span class="line">    	    .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    		<span class="comment">// 成功，隐藏加载效果，并显示出预览图</span></span><br><span class="line">	    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'PRELOAD_IMAGES'</span>, <span class="attr">data</span>: res.images &#125;);</span><br><span class="line">	    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'HIDE_WAITING_MODAL'</span> &#125;);</span><br><span class="line">	    	&#125;)</span><br><span class="line">	    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">	    	<span class="comment">// 错误，隐藏加载效果，显示出错误信息，2秒后消失</span></span><br><span class="line">	    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'SHOW_ERROR'</span>, <span class="attr">data</span>: err &#125;);</span><br><span class="line">	    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'HIDE_WAITING_MODAL'</span> &#125;);</span><br><span class="line">	    	setTimeout(<span class="function"><span class="params">_</span> =&gt;</span> dispatch(&#123; <span class="attr">type</span>: <span class="string">'HIDE_ERROR'</span> &#125;), <span class="number">2000</span>);</span><br><span class="line">	    &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="redux-saga-1"><a href="#redux-saga-1" class="headerlink" title="redux-saga"></a>redux-saga</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; take, put, call, delay &#125; <span class="keyword">from</span> <span class="string">'redux-saga/effects'</span></span><br><span class="line"><span class="comment">// 上传的异步流</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">uploadFlow</span>(<span class="params">action</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 显示出加载效果</span></span><br><span class="line">  	<span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'SHOW_WAITING_MODAL'</span> &#125;);</span><br><span class="line">  	<span class="comment">// 简单的 try-catch</span></span><br><span class="line">  	<span class="keyword">try</span>&#123;</span><br><span class="line">  	    <span class="keyword">const</span> response = <span class="keyword">yield</span> call(api.upload, action.data);</span><br><span class="line">	    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'PRELOAD_IMAGES'</span>, <span class="attr">data</span>: response.images &#125;);</span><br><span class="line">	    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'HIDE_WAITING_MODAL'</span> &#125;);</span><br><span class="line">  	&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">  	    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'SHOW_ERROR'</span>, <span class="attr">data</span>: err &#125;);</span><br><span class="line">	    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'HIDE_WAITING_MODAL'</span> &#125;);</span><br><span class="line">	    <span class="keyword">yield</span> delay(<span class="number">2000</span>);</span><br><span class="line">	  	<span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'HIDE_ERROR'</span> &#125;);</span><br><span class="line">  	&#125; 	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">watchUpload</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span>* takeEvery(<span class="string">'BEGIN_REQUEST'</span>, uploadFlow)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/03/21/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/03/22/image/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">amandakelake</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#react-状态管理-异步-思考"><span class="nav-number">1.</span> <span class="nav-text">react 状态管理+异步 思考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#渐进式地选择数据流工具"><span class="nav-number">1.1.</span> <span class="nav-text">渐进式地选择数据流工具</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Context"><span class="nav-number">1.1.0.0.0.1.</span> <span class="nav-text">Context</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Redux"><span class="nav-number">1.1.0.0.0.2.</span> <span class="nav-text">Redux</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#redux-thunk"><span class="nav-number">1.1.0.0.0.3.</span> <span class="nav-text">redux-thunk</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#redux-saga"><span class="nav-number">1.1.0.0.0.4.</span> <span class="nav-text">redux-saga</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-thunk-1"><span class="nav-number">1.2.</span> <span class="nav-text">redux-thunk</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#redux-thunk-2"><span class="nav-number">1.2.0.0.0.1.</span> <span class="nav-text">redux-thunk</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#redux-saga-1"><span class="nav-number">1.2.0.0.0.2.</span> <span class="nav-text">redux-saga</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">amandakelake</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
