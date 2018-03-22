@@ -79,12 +79,16 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="异步（一）：Promise深入理解与实例分析#Front-End/JS/基础 深入理解Promise运行原理 - 掘金 自己动手实现简易版promise转promises 很酷，但很多人并没有理解就在用了 | SHANG Blog讲了很多例子和一些坑，建议先看完基础再看它写一个符合 Promises/A+ 规范并可配合 ES7 async/await 使用的 Promise八段代码彻底掌握 Pro">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://github.com/amandakelake/blog/index.html">
+<meta property="og:url" content="http://github.com/amandakelake/blog/2018/03/22/image/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="异步（一）：Promise深入理解与实例分析#Front-End/JS/基础 深入理解Promise运行原理 - 掘金 自己动手实现简易版promise转promises 很酷，但很多人并没有理解就在用了 | SHANG Blog讲了很多例子和一些坑，建议先看完基础再看它写一个符合 Promises/A+ 规范并可配合 ES7 async/await 使用的 Promise八段代码彻底掌握 Pro">
+<meta property="og:updated_time" content="2018-03-22T02:29:32.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="异步（一）：Promise深入理解与实例分析#Front-End/JS/基础 深入理解Promise运行原理 - 掘金 自己动手实现简易版promise转promises 很酷，但很多人并没有理解就在用了 | SHANG Blog讲了很多例子和一些坑，建议先看完基础再看它写一个符合 Promises/A+ 规范并可配合 ES7 async/await 使用的 Promise八段代码彻底掌握 Pro">
 
 
 
@@ -114,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://github.com/amandakelake/blog/"/>
+  <link rel="canonical" href="http://github.com/amandakelake/blog/2018/03/22/image/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -139,8 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,9 +216,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -245,9 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/03/22/image/" itemprop="url">Untitled</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -297,9 +298,7 @@
       
 
       
-        
-          
-            <h1 id="异步（一）：Promise深入理解与实例分析"><a href="#异步（一）：Promise深入理解与实例分析" class="headerlink" title="异步（一）：Promise深入理解与实例分析"></a>异步（一）：Promise深入理解与实例分析</h1><p>#Front-End/JS/基础</p>
+        <h1 id="异步（一）：Promise深入理解与实例分析"><a href="#异步（一）：Promise深入理解与实例分析" class="headerlink" title="异步（一）：Promise深入理解与实例分析"></a>异步（一）：Promise深入理解与实例分析</h1><p>#Front-End/JS/基础</p>
 <p><a href="https://juejin.im/post/5a5ea6f56fb9a01cbf385e62" target="_blank" rel="noopener">深入理解Promise运行原理 - 掘金</a> 自己动手实现简易版promise<br><a href="https://blog.xinshangshangxin.com/2015/09/29/promise-problem/#%E6%96%B0%E6%89%8B%E9%94%99%E8%AF%AFNo-1%EF%BC%9A%E5%9B%9E%E8%B0%83%E9%87%91%E5%AD%97%E5%A1%94" target="_blank" rel="noopener">转promises 很酷，但很多人并没有理解就在用了 | SHANG Blog</a>讲了很多例子和一些坑，建议先看完基础再看它<br><a href="https://zhuanlan.zhihu.com/p/23312442" target="_blank" rel="noopener">写一个符合 Promises/A+ 规范并可配合 ES7 async/await 使用的 Promise</a><br><a href="https://juejin.im/post/597724c26fb9a06bb75260e8" target="_blank" rel="noopener">八段代码彻底掌握 Promise - 掘金</a></p>
 <p>基础定义和API方面，这里就不说了，请自行学习</p>
 <p>前面的理论部分基于《你不知道的JS》中卷第二部分第三章，可以结合前人的一些博客认真理解一下。 后面的代码实例非常有助于理解，并且我都做了注释，有基础的同学可以跳过理论部分直接参阅。</p>
@@ -364,8 +363,6 @@
 <p>有了第二段的基础，这一段应该就非常好理解了</p>
 <p>如果上述内容，看得不是很懂，建议多看几遍（不一定看我这篇，看看前人的也好），正所谓“读书百遍其义自见”</p>
 
-          
-        
       
     </div>
     
@@ -382,164 +379,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/amandakelake/blog/blog/2018/03/22/tttt/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="amandakelake">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/03/22/tttt/" itemprop="url">test</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T10:25:22+08:00">
-                2018-03-22
-              </time>
+              <a href="/blog/2018/03/22/tttt/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="react-状态管理-异步-思考"><a href="#react-状态管理-异步-思考" class="headerlink" title="react 状态管理+异步 思考"></a>react 状态管理+异步 思考</h1><p><a href="https://segmentfault.com/a/1190000011523186" target="_blank" rel="noopener">对使用Redux和Redux-saga管理状态的思考 - 莫凡的前端专栏 - SegmentFault 思否</a>值得一看，深度剖析<br><a href="https://segmentfault.com/a/1190000011104199" target="_blank" rel="noopener">聊聊redux-saga - 贰年人折木 - SegmentFault 思否</a>有一个登录登出的例子<br><a href="https://segmentfault.com/a/1190000007248878" target="_blank" rel="noopener">Redux异步方案选型 - kpaxqin - SegmentFault 思否</a>作者的视野比较高，从模板代码、乐观更新、错误处理、竞态等多方面进行选型分析</p>
-<h2 id="渐进式地选择数据流工具"><a href="#渐进式地选择数据流工具" class="headerlink" title="渐进式地选择数据流工具"></a>渐进式地选择数据流工具</h2><h6 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h6><p>我需要一个全局数据源且其他组件可以直接获取/改变全局数据源中的数据</p>
-<h6 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h6><ol>
-<li>我需要一个全局数据源且其他组件可以直接获取/改变全局数据源中的数据</li>
-<li>我需要全程跟踪/管理 action 的分发过程/顺序</li>
-</ol>
-<h6 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a>redux-thunk</h6><p><a href="bear://x-callback-url/open-note?id=19F38F31-215E-4803-8471-5AD3ABD7D0A2-321-0000635354743DFF" target="_blank" rel="noopener">Redux异步控制</a></p>
-<ol>
-<li>我需要一个全局数据源且其他组件可以直接获取/改变全局数据源中的数据</li>
-<li>我需要全程跟踪/管理 action 的分发过程/顺序</li>
-<li>我需要组件对同步或异步的 action 无感，调用异步 action 时不需要显式地传入 dispatch</li>
-</ol>
-<p>redux-thunk 的主要思想是扩展 action，使得 action 从一个对象变成一个函数。</p>
-<h6 id="redux-saga"><a href="#redux-saga" class="headerlink" title="redux-saga"></a>redux-saga</h6><ol>
-<li>我需要一个全局数据源且其他组件可以直接获取/改变全局数据源中的数据</li>
-<li>我需要全程跟踪/管理 action 的分发过程/顺序</li>
-<li>我需要组件对同步或异步的 action 无感，调用异步 action 时不需要显式地传入 dispatch</li>
-<li>我需要声明式地来表述复杂异步数据流（如长流程表单，请求失败后重试等），命令式的 thunk 对于复杂异步数据流的表现力有限</li>
-</ol>
-<p>先看名字来理解：saga，这个术语常用于CQRS架构，代表查询与责任分离。</p>
-<p>没错，就是查询（dispatch）与责任（sagas）分离。saga提供了action监听函数，只需在组件里dispatch 相应type的action，就可以自动调用你定义好的对应这个action的异步处理函数（sagas）来完成任务，保证了只在组件里dispatch action来发起异步操作而不是redux-thunk、redux-promise的调用action creators。</p>
-<p>另外一大特色就是redux-saga做到了异步代码以同步方式写，非常直观方便，怎么做到的呢？它是利用了ES6新魔法Generator迭代器，可以完美解决异步回调地狱，让你以同步方式写异步。saga正是利用Generator特性让其处理异步变得非常方便又容易理解。这是一个常见的请求后台数据的异步操作，感受一下：</p>
-<h2 id="redux-thunk-1"><a href="#redux-thunk-1" class="headerlink" title="redux-thunk"></a>redux-thunk</h2><p><a href="http://cn.redux.js.org/docs/advanced/AsyncActions.html" target="_blank" rel="noopener">Redux官方文档-thunk</a></p>
-<blockquote>
-<p>通过使用指定的 middleware，action 创建函数除了返回 action 对象外还可以返回函数。这时，这个 action 创建函数就成为了 thunk</p>
-</blockquote>
-<blockquote>
-<p>当 action 创建函数返回函数时，这个函数会被 Redux Thunk middleware 执行。这个函数并不需要保持纯净；它还可以带有副作用，包括执行异步 API 请求。这个函数还可以 dispatch action，就像 dispatch 前面定义的同步 action 一样<br>thunk 的一个优点是它的结果可以再次被 dispatch</p>
-</blockquote>
-<p>判断 actionCreator 返回的是不是一个函数，如果不是的话，就很普通地传给下一个中间件（或者 reducer）；如果是的话，那么把 dispatch、getState、extraArgument 作为参数传入这个函数里，实现异步控制<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleware</span>(<span class="params">extraArgument</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">&#123; dispatch, getState &#125;</span>) =&gt;</span> next =&gt; <span class="function"><span class="params">action</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> next(action);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>getState可以在reducer里面获取store里面的数据<br><code>const method = getState().cashier.method;</code></p>
-<p>举个比较简单的例子，我们现在要实现『图片上传』功能，用户点击开始上传之后，显示出加载效果，上传完毕之后，隐藏加载效果，并显示出预览图；如果发生错误，那么显示出错误信息，并且在2秒后消失。</p>
-<h6 id="redux-thunk-2"><a href="#redux-thunk-2" class="headerlink" title="redux-thunk"></a>redux-thunk</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">dispatch</span> =&gt;</span> &#123;</span><br><span class="line">    	<span class="comment">// 显示出加载效果</span></span><br><span class="line">    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'SHOW_WAITING_MODAL'</span> &#125;);</span><br><span class="line">    	<span class="comment">// 开始上传</span></span><br><span class="line">    	api.upload(data)</span><br><span class="line">    	    .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    		<span class="comment">// 成功，隐藏加载效果，并显示出预览图</span></span><br><span class="line">	    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'PRELOAD_IMAGES'</span>, <span class="attr">data</span>: res.images &#125;);</span><br><span class="line">	    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'HIDE_WAITING_MODAL'</span> &#125;);</span><br><span class="line">	    	&#125;)</span><br><span class="line">	    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">	    	<span class="comment">// 错误，隐藏加载效果，显示出错误信息，2秒后消失</span></span><br><span class="line">	    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'SHOW_ERROR'</span>, <span class="attr">data</span>: err &#125;);</span><br><span class="line">	    	dispatch(&#123; <span class="attr">type</span>: <span class="string">'HIDE_WAITING_MODAL'</span> &#125;);</span><br><span class="line">	    	setTimeout(<span class="function"><span class="params">_</span> =&gt;</span> dispatch(&#123; <span class="attr">type</span>: <span class="string">'HIDE_ERROR'</span> &#125;), <span class="number">2000</span>);</span><br><span class="line">	    &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="redux-saga-1"><a href="#redux-saga-1" class="headerlink" title="redux-saga"></a>redux-saga</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; take, put, call, delay &#125; <span class="keyword">from</span> <span class="string">'redux-saga/effects'</span></span><br><span class="line"><span class="comment">// 上传的异步流</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">uploadFlow</span>(<span class="params">action</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 显示出加载效果</span></span><br><span class="line">  	<span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'SHOW_WAITING_MODAL'</span> &#125;);</span><br><span class="line">  	<span class="comment">// 简单的 try-catch</span></span><br><span class="line">  	<span class="keyword">try</span>&#123;</span><br><span class="line">  	    <span class="keyword">const</span> response = <span class="keyword">yield</span> call(api.upload, action.data);</span><br><span class="line">	    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'PRELOAD_IMAGES'</span>, <span class="attr">data</span>: response.images &#125;);</span><br><span class="line">	    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'HIDE_WAITING_MODAL'</span> &#125;);</span><br><span class="line">  	&#125;<span class="keyword">catch</span>(err)&#123;</span><br><span class="line">  	    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'SHOW_ERROR'</span>, <span class="attr">data</span>: err &#125;);</span><br><span class="line">	    <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'HIDE_WAITING_MODAL'</span> &#125;);</span><br><span class="line">	    <span class="keyword">yield</span> delay(<span class="number">2000</span>);</span><br><span class="line">	  	<span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'HIDE_ERROR'</span> &#125;);</span><br><span class="line">  	&#125; 	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">watchUpload</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span>* takeEvery(<span class="string">'BEGIN_REQUEST'</span>, uploadFlow)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -549,138 +410,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://github.com/amandakelake/blog/blog/2018/03/21/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="amandakelake">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/blog/2018/03/21/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-21T18:07:46+08:00">
-                2018-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -688,6 +422,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -708,8 +446,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -751,6 +498,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异步（一）：Promise深入理解与实例分析"><span class="nav-number">1.</span> <span class="nav-text">异步（一）：Promise深入理解与实例分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#回调的缺陷"><span class="nav-number">1.1.</span> <span class="nav-text">回调的缺陷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Promise本质"><span class="nav-number">1.2.</span> <span class="nav-text">一、Promise本质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二、从事件循环角度理解Promise"><span class="nav-number">1.2.1.</span> <span class="nav-text">二、从事件循环角度理解Promise</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、从thenable看Promise"><span class="nav-number">1.3.</span> <span class="nav-text">三、从thenable看Promise</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、then-接收两个函数作为参数"><span class="nav-number">1.3.1.</span> <span class="nav-text">1、then()接收两个函数作为参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Promise-实例化时传入的函数会立即执行，then-…-中的回调需要异步延迟调用"><span class="nav-number">1.3.2.</span> <span class="nav-text">2、Promise 实例化时传入的函数会立即执行，then(…) 中的回调需要异步延迟调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Promise的异步处理"><span class="nav-number">1.4.</span> <span class="nav-text">四、Promise的异步处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Promise的错误处理"><span class="nav-number">1.5.</span> <span class="nav-text">五、Promise的错误处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、Promise的穿透"><span class="nav-number">1.6.</span> <span class="nav-text">六、Promise的穿透</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、Promise局限性"><span class="nav-number">1.7.</span> <span class="nav-text">七、Promise局限性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise性能"><span class="nav-number">1.8.</span> <span class="nav-text">Promise性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、几个不错的例子"><span class="nav-number">1.9.</span> <span class="nav-text">八、几个不错的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、理解三种状态"><span class="nav-number">1.9.1.</span> <span class="nav-text">1、理解三种状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、链式调用以及返回值"><span class="nav-number">1.9.2.</span> <span class="nav-text">2、链式调用以及返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、异常处理"><span class="nav-number">1.9.3.</span> <span class="nav-text">3、异常处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、resolve与reject的区别"><span class="nav-number">1.9.4.</span> <span class="nav-text">4、resolve与reject的区别</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -884,6 +647,10 @@
   
 
   
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
