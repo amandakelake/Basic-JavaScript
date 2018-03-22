@@ -1,0 +1,70 @@
+<h1 id="FastClick"><a href="#FastClick" class="headerlink" title="FastClick"></a>FastClick</h1><p>FastClick is a simple, easy-to-use library for eliminating the 300ms delay between a physical tap and the firing of a <code>click</code> event on mobile browsers. The aim is to make your application feel less laggy and more responsive while avoiding any interference with your current logic.</p>
+<p>FastClick is developed by <a href="http://labs.ft.com/">FT Labs</a>, part of the Financial Times.</p>
+<p><a href="http://maxime.sh/2013/02/supprimer-le-lag-des-clics-sur-mobile-avec-fastclick/">Explication en français</a>.</p>
+<p><a href="https://developer.mozilla.org/ja/docs/Mozilla/Firefox_OS/Apps/Tips_and_techniques#Make_events_immediate">日本語で説明</a>。</p>
+<h2 id="Why-does-the-delay-exist"><a href="#Why-does-the-delay-exist" class="headerlink" title="Why does the delay exist?"></a>Why does the delay exist?</h2><p>According to <a href="https://developers.google.com/mobile/articles/fast_buttons">Google</a>:</p>
+<blockquote>
+<p>…mobile browsers will wait approximately 300ms from the time that you tap the button to fire the click event. The reason for this is that the browser is waiting to see if you are actually performing a double tap.</p>
+</blockquote>
+<h2 id="Compatibility"><a href="#Compatibility" class="headerlink" title="Compatibility"></a>Compatibility</h2><p>The library has been deployed as part of the <a href="http://app.ft.com/">FT Web App</a> and is tried and tested on the following mobile browsers:</p>
+<ul>
+<li>Mobile Safari on iOS 3 and upwards</li>
+<li>Chrome on iOS 5 and upwards</li>
+<li>Chrome on Android (ICS)</li>
+<li>Opera Mobile 11.5 and upwards</li>
+<li>Android Browser since Android 2</li>
+<li>PlayBook OS 1 and upwards</li>
+</ul>
+<h2 id="When-it-isn’t-needed"><a href="#When-it-isn’t-needed" class="headerlink" title="When it isn’t needed"></a>When it isn’t needed</h2><p>FastClick doesn’t attach any listeners on desktop browsers.</p>
+<p>Chrome 32+ on Android with <code>width=device-width</code> in the <a href="https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag">viewport meta tag</a> doesn’t have a 300ms delay, therefore listeners aren’t attached.</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span>
+</code></pre>
+<p>Same goes for Chrome on Android (all versions) with <code>user-scalable=no</code> in the viewport meta tag. But be aware that <code>user-scalable=no</code> also disables pinch zooming, which may be an accessibility concern.</p>
+<p>For IE11+, you can use <code>touch-action: manipulation;</code> to disable double-tap-to-zoom on certain elements (like links and buttons).  For IE10 use <code>-ms-touch-action: manipulation</code>.</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Include fastclick.js in your JavaScript bundle or add it to your HTML page like this:</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">'application/javascript'</span> <span class="attr">src</span>=<span class="string">'/path/to/fastclick.js'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+<p>The script must be loaded prior to instantiating FastClick on any element of the page.</p>
+<p>To instantiate FastClick on the <code>body</code>, which is the recommended method of use:</p>
+<pre><code class="js"><span class="keyword">if</span> (<span class="string">'addEventListener'</span> <span class="keyword">in</span> <span class="built_in">document</span>) {
+    <span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+        FastClick.attach(<span class="built_in">document</span>.body);
+    }, <span class="literal">false</span>);
+}
+</code></pre>
+<p>Or, if you’re using jQuery:</p>
+<pre><code class="js">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    FastClick.attach(<span class="built_in">document</span>.body);
+});
+</code></pre>
+<p>If you’re using Browserify or another CommonJS-style module system, the <code>FastClick.attach</code> function will be returned when you call <code>require(&#39;fastclick&#39;)</code>. As a result, the easiest way to use FastClick with these loaders is as follows:</p>
+<pre><code class="js"><span class="keyword">var</span> attachFastClick = <span class="built_in">require</span>(<span class="string">'fastclick'</span>);
+attachFastClick(<span class="built_in">document</span>.body);
+</code></pre>
+<h3 id="Minified"><a href="#Minified" class="headerlink" title="Minified"></a>Minified</h3><p>Run <code>make</code> to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to <code>build/fastclick.min.js</code> or you can <a href="http://build.origami.ft.com/bundles/js?modules=fastclick">download a pre-minified version</a>.</p>
+<p>Note: the pre-minified version is built using <a href="http://origami.ft.com/docs/developer-guide/build-service/">our build service</a> which exposes the <code>FastClick</code> object through <code>Origami.fastclick</code> and will have the Browserify/CommonJS API (see above).</p>
+<pre><code class="js"><span class="keyword">var</span> attachFastClick = Origami.fastclick;
+attachFastClick(<span class="built_in">document</span>.body);
+</code></pre>
+<h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><p>FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as <a href="http://requirejs.org/">RequireJS</a>. Note that when using the AMD style require, the full <code>FastClick</code> object will be returned, <em>not</em> <code>FastClick.attach</code></p>
+<pre><code class="js"><span class="keyword">var</span> FastClick = <span class="built_in">require</span>(<span class="string">'fastclick'</span>);
+FastClick.attach(<span class="built_in">document</span>.body, options);
+</code></pre>
+<h3 id="Package-managers"><a href="#Package-managers" class="headerlink" title="Package managers"></a>Package managers</h3><p>You can install FastClick using <a href="https://github.com/component/component">Component</a>, <a href="https://npmjs.org/package/fastclick">npm</a> or <a href="http://bower.io/">Bower</a>.</p>
+<p>For Ruby, there’s a third-party gem called <a href="http://rubygems.org/gems/fastclick-rails">fastclick-rails</a>. For .NET there’s a <a href="http://nuget.org/packages/FastClick">NuGet package</a>.</p>
+<h2 id="Advanced"><a href="#Advanced" class="headerlink" title="Advanced"></a>Advanced</h2><h3 id="Ignore-certain-elements-with-needsclick"><a href="#Ignore-certain-elements-with-needsclick" class="headerlink" title="Ignore certain elements with needsclick"></a>Ignore certain elements with <code>needsclick</code></h3><p>Sometimes you need FastClick to ignore certain elements. You can do this easily by adding the <code>needsclick</code> class.</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"needsclick"</span>&gt;</span>Ignored by FastClick<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+</code></pre>
+<h4 id="Use-case-1-non-synthetic-click-required"><a href="#Use-case-1-non-synthetic-click-required" class="headerlink" title="Use case 1: non-synthetic click required"></a>Use case 1: non-synthetic click required</h4><p>Internally, FastClick uses <code>document.createEvent</code> to fire a synthetic <code>click</code> event as soon as <code>touchend</code> is fired by the browser. It then suppresses the additional <code>click</code> event created by the browser after that. In some cases, the non-synthetic <code>click</code> event created by the browser is required, as described in the <a href="http://ftlabs.github.com/fastclick/examples/focus.html">triggering focus example</a>.</p>
+<p>This is where the <code>needsclick</code> class comes in. Add the class to any element that requires a non-synthetic click.</p>
+<h4 id="Use-case-2-Twitter-Bootstrap-2-2-2-dropdowns"><a href="#Use-case-2-Twitter-Bootstrap-2-2-2-dropdowns" class="headerlink" title="Use case 2: Twitter Bootstrap 2.2.2 dropdowns"></a>Use case 2: Twitter Bootstrap 2.2.2 dropdowns</h4><p>Another example of when to use the <code>needsclick</code> class is with dropdowns in Twitter Bootstrap 2.2.2. Bootstrap add its own <code>touchstart</code> listener for dropdowns, so you want to tell FastClick to ignore those. If you don’t, touch devices will automatically close the dropdown as soon as it is clicked, because both FastClick and Bootstrap execute the synthetic click, one opens the dropdown, the second closes it immediately after.</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle needsclick"</span> <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span>Dropdown<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+</code></pre>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><p>FastClick is designed to cope with many different browser oddities. Here are some examples to illustrate this:</p>
+<ul>
+<li><a href="http://ftlabs.github.com/fastclick/examples/layer.html">basic use</a> showing the increase in perceived responsiveness</li>
+<li><a href="http://ftlabs.github.com/fastclick/examples/focus.html">triggering focus</a> on an input element from a <code>click</code> handler</li>
+<li><a href="http://ftlabs.github.com/fastclick/examples/input.html">input element</a> which never receives clicks but gets fast focus</li>
+</ul>
+<h2 id="Tests"><a href="#Tests" class="headerlink" title="Tests"></a>Tests</h2><p>There are no automated tests. The files in <code>tests/</code> are manual reduced test cases. We’ve had a think about how best to test these cases, but they tend to be very browser/device specific and sometimes subjective which means it’s not so trivial to test.</p>
+<h2 id="Credits-and-collaboration"><a href="#Credits-and-collaboration" class="headerlink" title="Credits and collaboration"></a>Credits and collaboration</h2><p>FastClick is maintained by <a href="http://twitter.com/rowanbeentje">Rowan Beentje</a>, <a href="http://twitter.com/mcaruanagalizia">Matthew Caruana Galizia</a> and <a href="http://twitter.com/andrewsmatt">Matthew Andrews</a> at <a href="http://labs.ft.com">FT Labs</a>. All open source code released by FT Labs is licenced under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request.</p>
