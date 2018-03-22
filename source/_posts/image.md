@@ -1,3 +1,7 @@
+---
+title: Promise深入理解与实例分析
+---
+
 # 异步（一）：Promise深入理解与实例分析
 #Front-End/JS/基础
 
